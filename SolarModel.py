@@ -92,7 +92,7 @@ df2['PowerOutput_Solar'] = np.select([df2.Day == 4, df2.Day == 6,df2.Day == 19,d
 			[0.03*df2.PowerOutput_Solar,0.05*df2.PowerOutput_Solar, 0.02*df2.PowerOutput_Solar,0.5*df2.PowerOutput_Solar,0.2*df2.PowerOutput_Solar,
 			0.05*df2.PowerOutput_Solar,0.1*df2.PowerOutput_Solar ], default=df2.PowerOutput_Solar)
 
-#Save model as a Pickle file
+#Save model as a Pickle file for user
 pickle.dump(lm,open('modelSolar.pkl','wb'))
 model= pickle.load(open('modelSolar.pkl','rb'))
 
