@@ -25,7 +25,7 @@ def get_dash(server):
     app.layout = html.Div([
         # html.H6("Change the value in the text box to see callbacks in action!"),
         html.A("Go to Home Page", href="/", style=styles["button_styles"]),
-        html.Div("Welcome to the Power Output Prediction Dashboard.", id='my-output',
+        html.Div("Welcome to the Power Output Prediction Dashboard", id='my-output',
                  style=styles["text_styles"]),
         html.Div(
             dcc.Graph(
