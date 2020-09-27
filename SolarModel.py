@@ -86,11 +86,13 @@ df2['PowerOutput_Solar'] = PowerOutput_Solar
 
 # Display the expected power output for 4 consecutive days
 df2 = df2[0:5]
+#print(df2) #for prediction display
 
 # Logic for maintenance schedule according to the maintenance csv days
 df2['PowerOutput_Solar'] = np.select([df2.Day == 4, df2.Day == 6,df2.Day == 19,df2.Day == 23,df2.Day == 24,df2.Day == 25,df2.Day == 28], 
 			[0.03*df2.PowerOutput_Solar,0.05*df2.PowerOutput_Solar, 0.02*df2.PowerOutput_Solar,0.5*df2.PowerOutput_Solar,0.2*df2.PowerOutput_Solar,
 			0.05*df2.PowerOutput_Solar,0.1*df2.PowerOutput_Solar ], default=df2.PowerOutput_Solar)
+#print(df2) #for prediction display
 
 #Save model as a Pickle file
 pickle.dump(lm,open('modelSolar.pkl','wb'))

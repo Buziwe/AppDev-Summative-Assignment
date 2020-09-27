@@ -66,11 +66,14 @@ df1['PowerOutput_Wind'] = PowerOutput_Wind
 
 # Display the expected power output for 4 consecutive days
 df1 = df1[0:5]
+#print(df1) #for prediction display
 
 # Logic for maintenance schedule according to the maintenance csv days
 df1['PowerOutput_Wind'] = np.select([df1.Day == 3, df1.Day == 5,df1.Day == 7,df1.Day == 8,df1.Day == 15,df1.Day == 24,df1.Day == 28], 
 			[0.7*df1.PowerOutput_Wind,0.6*df1.PowerOutput_Wind, 0.5*df1.PowerOutput_Wind,0.45*df1.PowerOutput_Wind,0.55*df1.PowerOutput_Wind,
 			0.9*df1.PowerOutput_Wind,0.3*df1.PowerOutput_Wind ], default=df1.PowerOutput_Wind)
+
+#print(df1) #for prediction display
 
 #Save model as a Pickle file
 pickle.dump(lm,open('modelWind.pkl','wb'))
